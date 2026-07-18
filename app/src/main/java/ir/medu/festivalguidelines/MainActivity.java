@@ -18,6 +18,11 @@ public class MainActivity extends Activity {
         s.setDomStorageEnabled(true);
         s.setAllowFileAccess(true);
         s.setAllowContentAccess(true);
+        // PDF.js loads the bundled PDF and worker with XMLHttpRequest from an
+        // android_asset page. Android blocks that access unless explicitly
+        // enabled for file:// pages.
+        s.setAllowFileAccessFromFileURLs(true);
+        s.setAllowUniversalAccessFromFileURLs(true);
         s.setBuiltInZoomControls(false);
         s.setDisplayZoomControls(false);
         webView.setWebViewClient(new WebViewClient());
